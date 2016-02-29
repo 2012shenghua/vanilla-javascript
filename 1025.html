@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>qq登陆面板鼠标跟随(有问题)</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<style>
+		#login{
+			position: absolute;
+			left:500px;
+			top:200px;
+			text-align: center;
+			width: 500px;
+			border: 1px solid grey;
+		}
+	</style>
+</head>
+<body>
+	<div id="login">
+		<h2 class="header">login</h2>
+		<form class="form-horizontal">
+  		<div class="form-group">
+    		<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    		<div class="col-sm-10">
+      		<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    		</div>
+  		</div>
+  		<div class="form-group">
+    		<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    		<div class="col-sm-10">
+      		<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    		</div>
+  		</div>
+	</div>
+</body>
+<script src="./getbyclass.js"></script>
+<script src="./eventUtil.js"></script>
+<script>
+	window.onload=function(){
+		var clsheader=getbyclass('header');
+		eventUtil.addHandler(clsheader,'click',function(){alert(1111);});
+		function drag(){
+			oTitle.onmousedown=fnDown;
+		}
+		function fnDown(){
+			var oDrag=document.getElementById('login');
+			document.onmousemove=function(event){
+				event=event||window.event;
+				alert(event.clientX);
+				oDrag.style.left=event.clientX+'px';
+				oDrag.style.top=event.clientY+'px';
+			};
+		}
+	}
+</script>
+</html>

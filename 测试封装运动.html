@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title></title>
+		<style type="text/css">
+			div{
+				width:200px;
+				height:100px;
+				filter: alpha(opacity=30);
+				opacity: .3;
+				font-size: 14px;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			高浮雕高浮雕撒
+		</div>
+	</body>
+    <script src="./封装运动.js" type="text/javascript" charset="utf-8"></script>
+    <script src="getStyle.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	window.onload=function () {
+    		var div=document.getElementById("div");
+    		div.onmouseover=function(){
+    			starMove(this,{width:800,height:400});
+    		}
+    		div.onmouseout=function(){
+    			starMove(this,{width:200,height:100});
+    		}
+    	}
+    </script>
+</html>
