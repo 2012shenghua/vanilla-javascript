@@ -11,13 +11,16 @@
 		#container{
 			height:400px;
 			margin:0 auto;
+            border-right: 1px solid #ccc;
+	        border-bottom: 1px solid #ccc;
 			overflow: hidden;
 			position: relative;
 		}
 		#container img{
+            display: block;
 			position: absolute;
-			top:0;
 			left:0;
+            border-left: 1px solid #ccc;
 		}
 	</style>
 </head>
@@ -51,7 +54,7 @@
 		//每道门滑动的距离
 		var translate=imgWidth-exposeWidth;
 		//为每道门绑定事件
-		for (var i=1,len=imgs.length;i<len;i++){
+		for (var i=0,len=imgs.length;i<len;i++){
 			(function(i){
 				imgs[i].onmouseover=function(){
 					//先将每道门复位

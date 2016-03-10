@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">   
+        /*
+         * param1 Array 
+         * param2 Array
+         * return true or false
+         */
+        function arraysSimilar(arr1, arr2){
+            var a = arr1.length,
+                b = arr2.length,
+                aType=[],
+                bType=[],
+                res = "判定结果不通过";
+            var c = (a===b)? 1 : 0;
+            if(c){
+                arr1.forEach(function(e){
+                    aType.push(typeof e);
+                });
+                arr2.forEach(function(e){
+                    bType.push(typeof e);
+                });
+                res = (aType.sort().toString()==bType.sort().toString())? "判定结果通过" : "判定结果不通过" ;
+            }
+            
+            return res;
+        }
+        
+    </script>
+</html>
