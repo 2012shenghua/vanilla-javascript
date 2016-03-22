@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜单下拉的鼠标和键盘事件</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style-type: none;
+		}
+		.select{
+			width: 200px;
+			margin: 250px auto;
+			position: relative;
+		}
+		#choseicon{
+			border: 2px solid black;
+			line-height: 30px;
+			height:30px;
+			padding-left: 10px;
+		}
+		#triangle{
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 10px solid grey;
+			position: absolute;
+			right:5px;
+			top:10px;
+		}
+		.select ul{
+			border:2px solid black;
+			border-top: none;
+			display: none;
+		}
+		.select li{
+			line-height: 30px;
+			padding-left: 10px;
+		}
+		.select li:hover{
+			background: grey;
+		}
+	</style>
+</head>
+<body>
+	<div class="select">
+		<div id="choseicon">请选择分类</div>
+		<div id="triangle"></div>
+		<ul>
+			<li>ASP开发</li>
+			<li>php开发</li>
+			<li>js开发</li>
+			<li>java开发</li>
+			<li>.net开发</li>
+		</ul>
+	</div>
+</body>
+<script src="./eventUtil.js"></script>
+<script>
+	var ul=document.getElementsByTagName('ul')[0],
+		triangle=document.getElementById('triangle'),
+		index=0,
+		li=document.getElementsByTagName('li');
+	window.onload=function(){
+		eventUtil.addHandler(triangle,'click',showul);	
+		eventUtil.addHandler(document,'click',hideul);
+		eventUtil.addHandler(document,'keyup',function(e){
+			e=eventUtil.getEvent(e);
+			if(e.keyCode===38){
+				index=index<1?li.length-1:--index;
+			}
+			else if(e.keyCode===40){
+				index=index>=li.length-1?0:++index;
+			}
+			else if(e.keyCode===13){
+				var text=li[index].innerHTML;
+				document.getElementById('choseicon').innerHTML=text;
+				hideul();
+			}
+			for(var i=0,l=li.length;i<l;i++)
+			li[i].style.background="white";
+			li[index].style.background="grey";
+		});
+		for(var i=0,l=li.length;i<l;i++)
+			eventUtil.addHandler(li[i],'click',choseicon);
+	};
+	function showul(e){
+		ul.style.display="block";
+		eventUtil.stopPropagation(e);
+	};
+	function hideul(){
+		ul.style.display="none";
+	}
+	function choseicon(e){
+		var text=this.innerHTML;
+		document.getElementById('choseicon').innerHTML=text;
+		hideul();
+		eventUtil.stopPropagation(e);
+	}
+</script>
+</html>
