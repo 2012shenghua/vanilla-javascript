@@ -8,8 +8,16 @@
 	
 </body>
 <script>
-	console.time("test");
-	for(var i=0;i<1000000000;i++){}
-	console.timeEnd("test");
+    var a = [1,2,3,4,5];
+	console.time("testfor");
+	for(var i = 0, n = a.length; i < n; i++){
+        console.log(a[i]);
+    }
+	console.timeEnd("testfor");
+    console.time("testforin");
+    for(var i in a){
+        console.log(a[i]);
+    }
+    console.timeEnd("testforin");
 </script>
 </html>
