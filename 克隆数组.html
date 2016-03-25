@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    var arr = [1,2,3],
+        clone1,
+        clone2;
+    Array.prototype.clone1 = function() {
+        return this.slice(0);
+    }
+    Array.prototype.clone2 = function() {
+        return [].concat(this);
+    }
+    clone1 = arr.clone1();
+    console.log("clone1 = " + clone1);
+    clone2 = arr.clone2();
+    console.log("clone2 = " + clone2);
+</script>
+</body>
+</html>
