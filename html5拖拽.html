@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#dropElement {width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+#dragElement {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+</style>
+
+</head>
+<body>
+
+<p>请把 W3School 的图片拖放到矩形中：</p>
+
+<div id="dragElement" class="element" draggable="true"> drag me </div>
+<div id="dropElement" class="element"> drop here </div>
+<script type="text/javascript">
+var dragElement = document.getElementById("dragElement");
+var dropElement = document.getElementById("dropElement");
+
+dragElement.ondragstart = function(e){
+	e.dataTransfer.setData("text/plain",e.target.textContent);
+}
+
+dropElement.ondragover = function(e){
+	//zhe
+	if(e.dataTransfer.types == "text/plain"){
+		//取消浏览器默认操作（浏览器默认操作时将drop事件取消，所以这里必须取消默认操作）
+		e.preventDefault();
+	}
+}
+
+dropElement.ondrop = function(e){
+	//取消浏览器默认操作
+	e.preventDefault();
+	//获取所拖动时设置的数据
+	var dragData = e.dataTransfer.getData('text/plain');
+	console.log(dragData);
+}
+</script>
+</body>
+</html>
