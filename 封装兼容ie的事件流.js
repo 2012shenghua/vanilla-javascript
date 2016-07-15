@@ -7,7 +7,6 @@ var eventUtil={
                element.attachEvent('on'+type,handler);
           else
                element['on'+type]=handler;
-               //element.onclick===element['onclick'];
      },
      
      //删除句柄

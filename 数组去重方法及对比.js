@@ -27,35 +27,27 @@ const sort = arr => {
     return arr;
 }
 
-const foreach = arr => arr.forEach(value => res.includes(value) && res.push(value), res = []);
+const foreach = arr => {
+    arr.forEach(value => {
+        res.indexOf(value) == -1 && res.push(value);
+    }, res = []);
+    return res;
+}
 
-console.log(foreach(arr));
-
-// let mapFunc = arr => {
-//     arr.map(function (item) {
-//   return item * item;
-// });
-//     console.log(arr);
-// }
-let mapFunc = arr => arr.map((value, index, array) => index != array.indexOf(value) ? value : arr.slice(index, 1))
-
-//console.log(mapFunc(arr));
-
-// console.log(arr);
-// suit.add('es6', function() {
-//     es6(arr);
-// }).add('filter', function() {
-//     filter(arr);
-// }).add('json', function() {
-//     json(arr);
-// }).add('sort', function() {
-//     sort(arr);
-// }).add('foreach', function() {
-//     foreach(arr);
-// }).add('mapFunc', function() {
-//     mapFunc(arr);
-// }).on('cycle', function(event) {
-//     console.log(String(event.target));
-// }).on('complete', function() {
-//     console.log('Fastest is ' + this.filter('fastest').map('name') + '\n slowest is ' + this.filter('slowest').map('name'));
-// }).run({'async': true});
+suit.add('es6', function() {
+    es6(arr);
+}).add('filter', function() {
+    filter(arr);
+}).add('json', function() {
+    json(arr);
+}).add('sort', function() {
+    sort(arr);
+}).add('foreach', function() {
+    foreach(arr);
+}).add('mapFunc', function() {
+    mapFunc(arr);
+}).on('cycle', function(event) {
+    console.log(String(event.target));
+}).on('complete', function() {
+    console.log('Fastest is ' + this.filter('fastest').map('name') + '\n slowest is ' + this.filter('slowest').map('name'));
+}).run({'async': true});
