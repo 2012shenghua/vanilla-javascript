@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        #menu {
+            border: 2px solid grey;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 20px;
+            display: none;
+        }
+        #menu li {
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>操作提示，点击鼠标右键</h1>
+    <div id="menu">
+        <ul>
+            <li>dffdsf</li>
+            <li>dffdsf</li>
+            <li>dffdsf</li>
+            <li>dffdsf</li>
+        </ul>
+    </div>
+</body>
+<script>
+    function g(id){
+        return document.getElementById(id);
+    }
+    document.oncontextmenu = function(){
+        var e = e||window.event;
+        var x = e.pageX,
+            y = e.pageY;
+        //console.log(x+" "+y);
+        g("menu").style.top = y + "px";
+        g("menu").style.left = x + "px";
+        g("menu").style.display = "block";       
+        if(e.preventDefault){
+            e.preventDefault();
+        }else {
+            e.returnValue = false;
+        }
+    };
+    document.onclick =function(){
+        g("menu").style.display = "none";
+    };
+</script>
+</html>
