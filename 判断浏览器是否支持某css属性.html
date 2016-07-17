@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    var styleSupport = function(styleProp) {
+        var prefix = ['webkit', 'moz', 'ms'];
+        var $el = document.createElement('div');
+        var styleText = $el.style;
+        if (styleText[styleProp] !== undefined) {
+            return true;
+        }
+
+        for (var i = 0; i < 3; i++) {
+            var _styleProp = prefix[i] + styleProp;
+            if (styleText[_styleProp] !== undefined) {
+                return true;
+            }
+        }
+        return false;
+    }
+    console.log(styleSupport('column-count'));
+</script>
+</body>
+</html>
