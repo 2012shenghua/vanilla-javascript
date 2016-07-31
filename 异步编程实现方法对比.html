@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    onf1.on('evt', onf2);
+
+    function onf1() {
+        setTimeout(function() {
+            console.log('testOn f1');
+            onf1.trigger('evt');
+        }, 500);
+    }
+
+    function onf2() {
+        console.log('testOn  f2');
+    }
+</script>
+</body>
+</html>
