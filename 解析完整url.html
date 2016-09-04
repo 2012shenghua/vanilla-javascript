@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    function parseURL(url) {
+        var a = document.createElement('a');
+        a.href = url;
+        return {
+            url: a.href,
+            protocol: a.protocol.replace(':',''),
+            host: a.hostname,
+            port: a.port,
+            query: a.search,
+            params: (function(){
+                var res = {},
+                    seg = a.search.replace(/^\?/,'').split('&'),
+                    s;
+                for(var i = 0, len = seg.length; i < len; i++) {
+                    if(!seg[i]) {continue;}
+                    s = seg[i].split('=');
+                    res[s[0]] = s[1];
+                }
+                return res;
+            }()),
+            file: (a.pathname.match(/([^/?#]+)$/i) || [,''])[1],
+            hash: a.hash.replace('#',''),
+            path: a.pathname.replace(/^([^/])/,'/$1')
+        }
+    }
+    var url = 'https://www.zhihu.com/search?type=content&q=%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86';
+    console.log(parseURL(url));
+</script>
+</body>
+</html>
