@@ -1,24 +1,21 @@
-function isPrime(number) {
-   // If your browser doesn't support the method Number.isInteger of ECMAScript 6,
-   // you can implement your own pretty easily
-   if (typeof number !== 'number' || !Number.isInteger(number)) {
-      // Alternatively you can throw an error.
-      return false;
-   }
-   if (number < 2) {
-      return false;
-   }
- 
-   if (number === 2) {
-      return true;
-   } else if (number % 2 === 0) {
-      return false;
-   }
-   var squareRoot = Math.sqrt(number);
-   for(var i = 3; i <= squareRoot; i += 2) {
-      if (number % i === 0) {
-         return false;
-      }
-   }
-   return true;
+function isPrime(num) {
+    if(typeof num !== 'number' || !Number.isInteger(num) || num < 2) {
+        return false;
+    }
+    if(num === 2) {
+        return true;
+    }else if(num % 2 === 0) {
+        return false;
+    }
+    var limit = Math.sqrt(num);
+    for(var i = 3; i < limit; i += 2) {
+        if(num % i === 0) {
+            return false;
+        }
+    }
+    return true;
 }
+
+console.log(isPrime(2));
+console.log(isPrime(1));
+console.log(isPrime(7));
