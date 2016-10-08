@@ -1,5 +1,6 @@
-let benchmark = require('benchmark');
-let suit = new benchmark.Suite;
+const print = require('./print.js');
+const benchmark = require('benchmark');
+const suit = new benchmark.Suite;
 let arr = [1, 1, 1, 2, 3, 2, 4];
 
 const es6 = arr => Array.from(new Set(arr));
@@ -47,7 +48,7 @@ suit.add('es6', function() {
 }).add('mapFunc', function() {
     mapFunc(arr);
 }).on('cycle', function(event) {
-    console.log(String(event.target));
+    print(String(event.target));
 }).on('complete', function() {
-    console.log('Fastest is ' + this.filter('fastest').map('name') + '\n slowest is ' + this.filter('slowest').map('name'));
+    print('Fastest is ' + this.filter('fastest').map('name') + '\n slowest is ' + this.filter('slowest').map('name'));
 }).run({'async': true});

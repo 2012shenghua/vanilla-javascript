@@ -10,7 +10,7 @@ let arr1 = [1, '2', 3],
 
 const arraysSimilar = (arr1, arr2) => {
     if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
-		throw  new Error('非数组');
+		throw  new Error('is not Array');
 	}
     let a = arr1.length,
         b = arr2.length,
@@ -31,4 +31,4 @@ const arraysSimilar = (arr1, arr2) => {
     }    
     return res;
 }
-console.log(arraysSimilar(arr1, arr2));
+print(arraysSimilar(arr1, arr2));

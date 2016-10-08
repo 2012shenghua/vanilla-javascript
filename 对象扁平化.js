@@ -23,7 +23,7 @@ const sear = (obj, deep, arr) => {
     return arr;
 }
 
-console.log(sear(obj, 0, {}));
+print(sear(obj, 0, {}));
 var res = sear(obj, 0, []).reverse().join(',');
-console.log(res);
+print(res);
 

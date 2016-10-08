@@ -1,3 +1,5 @@
+const print = require('./print.js');
+
 function normalize(arr) {
     if (arr && Array.isArray(arr)) {
         for (var i = arr.length; i > 0; i--) {
@@ -33,5 +35,5 @@ function fillArray(arr, start, end) {
     fillArray(arr, 1, 100);
     ascSort(arr);
     normalize(arr);
-    console.log(arr);
+    print(arr);
 })()

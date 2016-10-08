@@ -1,4 +1,5 @@
-var co = require('co');
+const co = require('co');
+const print = require('./print.js');
 
 function sleep(ms) {
   return new Promise((resolve) => {
@@ -9,5 +10,5 @@ function sleep(ms) {
 co(function *(){
   var now = new Date();
   yield sleep(2000);
-  console.log(new Date() - now);
+  print(new Date() - now);
 })

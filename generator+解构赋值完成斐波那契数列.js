@@ -1,3 +1,5 @@
+const print = require('./print.js');
+
 function* fibs(end) {
     var a = 1;
     var b = 1;
@@ -8,5 +10,5 @@ function* fibs(end) {
 }
 
 for (let v of fibs()) {
-    console.log(v);
+    print(v);
 }

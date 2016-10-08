@@ -3,19 +3,20 @@
 该函数应批量改造原Page的postXXX方法,在保留其原有功能的同时,为每个postXXX方法增加拦截验证功能,当chekc返回true时继续
 执行原postXXX方法,返回false时不再执行原postXXX方法 
 */
+const print = require('./print.js');
 
 function Page() {}
 
 Page.prototype = {
     constructor: Page,
     postA: function(arg) {
-        console.log('a = ' + arg);
+        print('a = ' + arg);
     },
     postB: function(arg) {
-        console.log('b = ' + arg);
+        print('b = ' + arg);
     },
     postC: function(arg) {
-        console.log('c = ' + arg);
+        print('c = ' + arg);
     },
     check: function() {
         return Math.random() > 0.5;

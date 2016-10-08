@@ -1,3 +1,5 @@
+const print = require('./print.js');
+
 var sender = '<script>alert("abc")</script>'; // 恶意代码
 var message = safeHTML`<p>${sender} has send you a message</p>`;
 
@@ -14,4 +16,4 @@ function safeHTML(templateData) {
     return s;
 }
 
-console.log(message);
+print(message);

@@ -1,3 +1,5 @@
+const print = require('./print.js');
+
 function deepClone(obj) {
     var _toString = Object.prototype.toString;
     var res = Array.isArray(obj) ? [] : obj.constructor ? new obj.constructor(): {};
@@ -42,7 +44,7 @@ function deepClone(obj) {
         func: function() {}
     };
     var newObj = deepClone(obj);
-    console.log(newObj === obj);
-    console.log(newObj, obj);
-    console.log(newObj.hobbys === obj.hobbys)
+    print(newObj === obj);
+    print(newObj, obj);
+    print(newObj.hobbys === obj.hobbys)
 })()
